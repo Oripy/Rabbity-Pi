@@ -1,7 +1,7 @@
 Rabbity-Pi
 ==========
 
-Integration of a Raspberry-Pi in a Nabaztag v1
+Integration of a Raspberry-Pi to control a Nabaztag v1.
 
 Nabaztag hardware investigations
 ================================
@@ -21,13 +21,16 @@ Personnal investigation (ongoing)
 ---------------------------------
 
 **General**
+
 All external elements (motors, sensors, button and power) are connected to the motherboard by removable connectors, but it seems that some glue was added. I managed to disconnect them using a flat screwdriver.
 
 **LEDs**
+
 In order to have a nice circle on the Nabaztag body instead of a blurry light, LEDs are focused by pieces of black plastic, which are glued to the motherboard. As I want to keep the motherboard intact, I will have to find substitute for those little black tubes.
 The LEDs themselves seems to be RGB SMD LEDs. I don't really need to investigate more than that as I will not reuse those LEDs. I just have to find suitable RGB LEDs (not SMD as I don't have any experience with those tiny components).
 
 **Ears**
+
 Each ear is put in motion by an electric motors with some plastic reduction gear box. In the v2 of the Nabaztag it seems that they changed that with a pulleys-belt system.
 At first I thought that the motors were stepper motors, but it seems that they are in fact just classic DC motors (only two wires are connected to them).
 
@@ -38,12 +41,15 @@ Todo:
 - Test the optical encoder to understand how the different positions are encoded.
 
 **Loudspeaker**
+
 The loudspeaker is very classic (and very low fidelity). I will have to investigate to see if I can connect it directly to the audio output of the Raspberry-Pi without fear of damaging it.
 
 **Button**
+
 The button on the head is connected to the motherboard using a removable connector, I will be able to reuse it directly.
 
 **Power**
+
 At first I wasn't interested in re-using the Nabaztag power system but as it provides a removable connector that may be easily connected to my electronic board, I may reuse it. At least to power the motors, and maybe the Raspberry-Pi itself if the voltage and other characteristics are suitable.
 
 Raspberry-Pi
@@ -58,10 +64,10 @@ I also need to get a keyboard :)
 GPIO
 ----
 
-This is an estimation of the number of GPIO I will need for the project.
-LEDs : 3 per RGB LED and 5 LEDs => 15
-Motors : 2 per Motor and 2 Motors => 4
-Encoder : 4 per encoder and 2 encoders => 8
-Button : 1
+This is an estimation of the number of GPIO I will need for the project:
+- LEDs : 3 per RGB LED and 5 LEDs => 15
+- Motors : 2 per Motor and 2 Motors => 4
+- Encoder : 4 per encoder and 2 encoders => 8
+- Button : 1
 
 This is a total of 28 GPIO, which is too much for the Raspberry-Pi (Max 17 GPIO?). I need to see if I can reduce the needs on the encoders (I don't really need a 16 step ear rotation resolution) as well as the need for LEDs (maybe I can have some common pins or some LEDs may not need to be RGB).
